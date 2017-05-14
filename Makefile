@@ -1,6 +1,6 @@
 # Build a pdf document with latexmk
 
-DOC_NAME=document
+DOC_NAME=thesis
 
 LATEXMK=latexmk
 PDFTARGET=-pdf -pdflatex="pdflatex -interaction=nonstopmode"

@@ -21,5 +21,6 @@ a4paper,
 % the things.
 \RequirePackage{stylefiles/thesis-titlepage}
 
+% 
 % Provide the class.
 \ProvidesClass{stylefiles/thesis}
