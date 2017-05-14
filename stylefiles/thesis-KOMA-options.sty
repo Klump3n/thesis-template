@@ -1,0 +1,76 @@
+\ProvidesPackage{stylefiles/thesis-KOMA-options}
+
+% Load package for styling of pages.
+\RequirePackage[
+automark,
+pagestyleset=KOMA-Script
+]{scrlayer-scrpage}
+
+% Set pagestyle.
+\pagestyle{scrheadings}
+
+% The first page in a chapter also has header and footer.
+% Disable header at some point.
+\renewcommand*{\chapterpagestyle}{headings}
+
+% Plain left page before new chapter.
+% Set to empty to omit page number.
+\KOMAoptions{
+  cleardoublepage=plain
+}
+
+% Chapter starts with Chapter X [newline] {Chapter headline} instead of
+% just {Chapter headline}.
+\KOMAoptions{
+  chapterprefix=true
+}
+
+% Appendix starts with ... see above.
+\KOMAoptions{
+  appendixprefix=true
+}
+
+% Topmost header line on regular page.
+\KOMAoptions{
+  headsepline=true
+}
+
+% Separation line of header and text part.
+\KOMAoptions{
+  headtopline=false
+}
+
+% Bottommostline of footer and text part.
+\KOMAoptions{
+  footbotline=true
+}
+
+% Separation line of footer and text part.
+\KOMAoptions{
+  footsepline=true
+}
+
+% Adjust this value for more or less text on pages. Set to i.e. 10 (fewer text)
+% or 15 (more text) or 'calc', so KOMA can figure out what's best.
+\KOMAoptions{
+  DIV=calc
+}
+
+% Accounts for lost margins when binding.
+\KOMAoptions{
+  BCOR=12mm
+}
+
+% No end dot on references.
+\KOMAoptions{
+  numbers=noenddot
+}
+
+% Open chapters on any page.
+\KOMAoptions{
+  headings=openany
+}
+
+\KOMAoptions{
+  twoside=false
+}

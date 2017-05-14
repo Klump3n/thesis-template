@@ -1,0 +1,153 @@
+% Provides a titlepage package for the thesis. This redefines the
+% macro \maketitle.
+% 
+
+% 
+% For coloring stuff we have to edit later.
+\RequirePackage{xcolor}
+
+% A nice default font. This also adds around 180kB of size to the output pdf.
+\RequirePackage{libertine}
+\RequirePackage[libertine]{newtxmath}
+
+% For setting i.e. the margins of a page to some non-default value.
+\RequirePackage[a4paper]{geometry}
+
+% To get i.e. umlauts for german thesises.
+\RequirePackage[utf8]{inputenc}
+
+% 
+% Define macros for the properties of the titlepage.
+\newcommand*{\DefThesisTitle}{}
+\newcommand*{\ThesisTitle}[1]{\renewcommand*{\DefThesisTitle}{#1}}
+
+\newcommand*{\DefThesisAuthor}{}
+\newcommand*{\ThesisAuthor}[1]{\renewcommand*{\DefThesisAuthor}{#1}}
+
+\newcommand*{\DefThesisAuthorBirthDate}{}
+\newcommand*{\ThesisAuthorBirthDate}[1]{\renewcommand*{\DefThesisAuthorBirthDate}{#1}}
+
+\newcommand*{\DefThesisAuthorBirthPlace}{}
+\newcommand*{\ThesisAuthorBirthPlace}[1]{\renewcommand*{\DefThesisAuthorBirthPlace}{#1}}
+
+\newcommand*{\DefThesisMentorA}{}
+\newcommand*{\ThesisMentorA}[1]{\renewcommand*{\DefThesisMentorA}{#1}}
+
+\newcommand*{\DefThesisMentorB}{}
+\newcommand*{\ThesisMentorB}[1]{\renewcommand*{\DefThesisMentorB}{#1}}
+
+\newcommand*{\DefThesisDegree}{}
+\newcommand*{\ThesisDegree}[1]{\renewcommand*{\DefThesisDegree}{#1}}
+
+\newcommand*{\DefThesisDegreeClass}{}
+\newcommand*{\ThesisDegreeClass}[1]{\renewcommand*{\DefThesisDegreeClass}{#1}}
+
+\newcommand*{\DefThesisDegreeShort}{}
+\newcommand*{\ThesisDegreeShort}[1]{\renewcommand*{\DefThesisDegreeShort}{#1}}
+
+\newcommand*{\DefThesisDegreeClassShort}{}
+\newcommand*{\ThesisDegreeClassShort}[1]{\renewcommand*{\DefThesisDegreeClassShort}{#1}}
+
+\newcommand*{\DefSubject}{}
+\newcommand*{\Subject}[1]{\renewcommand*{\DefSubject}{#1}}
+
+\newcommand*{\DefInstitute}{}
+\newcommand*{\Institute}[1]{\renewcommand*{\DefInstitute}{#1}}
+
+\newcommand*{\DefFaculty}{}
+\newcommand*{\Faculty}[1]{\renewcommand*{\DefFaculty}{#1}}
+
+\newcommand*{\DefUniversity}{}
+\newcommand*{\University}[1]{\renewcommand*{\DefUniversity}{#1}}
+
+\newcommand*{\DefGroup}{}
+\newcommand*{\Group}[1]{\renewcommand*{\DefGroup}{#1}}
+
+% 
+% Set the properties of the title page.
+\ThesisTitle{\color{red}Default thesis title.}
+
+\ThesisAuthor{\color{red}Max Mustermann}
+\ThesisAuthorBirthDate{\color{red}01.01.1970}
+\ThesisAuthorBirthPlace{\color{red}Musterstadt}
+
+\ThesisMentorA{\color{red}Mentor A}
+\ThesisMentorB{\color{red}Mentor B}
+
+\ThesisDegree{\color{red}Bachelor}
+\ThesisDegreeClass{Science}
+
+\ThesisDegreeShort{\color{red}B.}
+\ThesisDegreeClassShort{Sc.}
+
+\Subject{Physik}
+
+\Group{AG Theoretische Optik \& Photonik}
+\Institute{Institut für Physik}
+\Faculty{Mathematisch-Naturwissenschaftlichen Fakultät}
+\University{Humboldt-Universität zu Berlin}
+
+%
+% Redefine the \maketitle macro.
+\renewcommand*{\maketitle}{
+  \begin{titlepage}
+    \newgeometry{bottom=3cm,top=2.5cm,right=2.5cm,left=2.5cm}
+    \sffamily
+    \begin{center}
+      { \Large
+        \hrule
+        \vspace{1em}
+        \begin{center}
+          \hspace*{1cm}\begin{minipage}[hbt]{10.5cm}
+            {\DefInstitute}
+
+            {\DefGroup}
+          \end{minipage}
+          \begin{minipage}[hbt]{2cm}
+            \centering
+            % \includegraphics[width=3cm]{Logos/husiegel}
+          \end{minipage}\hspace*{1cm}
+        \end{center}
+        \vspace{1em}
+        \hrule 
+      } 
+      \vspace*{\stretch{20}}
+      { 
+        \LARGE\bfseries
+        {\DefThesisTitle}\\
+      }
+      \vspace*{\stretch{12}}
+      { \Large
+        {\DefThesisDegree arbeit} \\ \vspace*{\stretch{5}}
+        zur  Erlangung des akademischen Grades \\ \vspace*{\stretch{0.5}}
+        {{\DefThesisDegree} of {\DefThesisDegreeClass} \\ \vspace*{\stretch{0.5}}
+          ({\DefThesisDegreeShort}{\DefThesisDegreeClassShort})} \\ \vspace*{\stretch{0.5}}
+        im Fach {\DefSubject}\\ \vspace*{\stretch{5}}
+        eingereicht an der  \\ \vspace*{\stretch{0.5}}
+        {\DefFaculty}\\ \vspace*{\stretch{0.5}}
+        {\DefInstitute} \\ \vspace*{\stretch{0.5}}
+        {\DefUniversity}\\ \vspace*{\stretch{5}}
+        von \\\vspace*{\stretch{0.5}}
+        {\DefThesisAuthor} \\\vspace*{\stretch{0.5}}
+        geboren am {\DefThesisAuthorBirthDate} in {\DefThesisAuthorBirthPlace}\\
+      }
+    \end{center}
+    \hspace*{0.1cm}\\
+    \vspace*{\stretch{3}}\\
+    {\Large Betreuung:\\ \vspace*{\stretch{0.5}}\\
+      \hspace*{0.5cm}{ 
+        \begin{tabular}{r@{\hspace{2em}}l}
+          1.     & \emph{\DefThesisMentorA}\\ \vspace*{\stretch{0.5}}
+          2.  & \emph{\DefThesisMentorB}
+        \end{tabular}
+      }}
+  \end{titlepage}
+  
+  \cleardoublepage
+  \restoregeometry
+}
+\endinput
+
+% 
+% After doing all this good stuff we provide the actual package.
+\ProvidePackage{stylefiles/thesis-titlepage}

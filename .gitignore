@@ -1,0 +1,8 @@
+auto/
+*.pdf
+
+# Keep an empty folder
+build/*
+!build/.gitkeep
+
+notes
