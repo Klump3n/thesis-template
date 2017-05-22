@@ -1,0 +1,68 @@
+% Provides a command to create the frontmatter.
+
+% Load the titlepage package. See the package itself for commands to edit all
+% the things.
+\RequirePackage{stylefiles/thesis-titlepage}
+
+%
+% Define the assertion page.
+%
+% Define macros.
+\newcommand*{\DefThesisPublicationDate}{}
+\newcommand*{\ThesisPublicationDate}[1]{\renewcommand*{\DefThesisPublicationDate}{#1}}
+\newcommand*{\DefThesisExamRegulationsFrom}{}
+\newcommand*{\ThesisExamRegulationsFrom}[1]{\renewcommand*{\DefThesisExamRegulationsFrom}{#1}}
+\newcommand*{\DefThesisAuthorOfResidence}{}
+\newcommand*{\ThesisAuthorOfResidence}[1]{\renewcommand*{\DefThesisAuthorOfResidence}{#1}}
+
+%
+% Set default values.
+%
+\ThesisPublicationDate{\color{red}01. Januar 1970}
+\ThesisExamRegulationsFrom{\color{red}01. Januar 1970}
+\ThesisAuthorOfResidence{\color{red}Musterstadt}
+
+%
+% Define the assertion.
+%
+\newcommand*{\makeassertiongerman}{
+  \thispagestyle{empty}
+  \vspace*{33\baselineskip}
+  \hbox to \textwidth{\hrulefill}
+  \par
+  \noindent 
+  Ich erkläre hiermit, dass ich unter Beachtung der Prüfungsordnung für das
+  {\DefThesisDegree studium} {\DefThesisSubject} vom
+  {\DefThesisExamRegulationsFrom} die vorliegende Arbeit selbständig verfasst
+  habe.
+  
+  \noindent
+  Zudem versichere ich, dass ich hiermit erstmalig eine {\DefThesisDegree
+    arbeit} im Studiengebiet {\DefThesisSubject} einreiche. \vspace{1.0cm} 
+
+  \noindent
+  {\DefThesisAuthorOfResidence}, den {\DefThesisPublicationDate}
+
+  \cleardoublepage
+}
+
+%
+% Define a dedication macro.
+% Usage is \ThesisDedication{Headline of chapter}{path_to_file}
+\newcommand*{\DefThesisDedication}{}
+\newcommand*{\ThesisDedication}[2]{\renewcommand*{\DefThesisDedication}{
+    \chapter*{#1}
+    \input{#2}
+  }
+}
+
+\newcommand*{\makefrontmatter}{
+  \frontmatter
+  \maketitle
+  \makeassertiongerman
+  \DefThesisDedication
+  \tableofcontents
+  \mainmatter
+}
+
+\ProvidesPackage{stylefiles/thesis-makefrontmatter}

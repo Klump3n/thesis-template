@@ -1,0 +1,19 @@
+% Provides a command to create the backmatter.
+
+\newcommand*{\makebackmatter}{
+  \backmatter
+  \cleardoublepage
+  \clearpage
+  \addcontentsline{toc}{chapter}{\bibname} %%% appearance in table of content: \bibname ensures proper language (english/german)
+  \chead{Literatur}
+  % \renewcommand{\glossarypreamble}{Literatur}
+  % \renewcommand{\glossarypostamble}{Literatur}
+  \printbibliography[
+  heading=bibliography,
+  notcategory=ownpublications,
+  title={Literatur}]
+
+  
+}
+
+\ProvidesPackage{stylefiles/thesis-makebackmatter}

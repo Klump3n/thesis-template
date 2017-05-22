@@ -7,6 +7,14 @@ pagestyleset=KOMA-Script
 % Set pagestyle.
 \pagestyle{scrheadings}
 
+% Line widths.
+\setheadtopline{2pt}
+\setheadsepline{0.5pt}
+\setfootsepline{0.5pt}
+\setfootbotline{2pt}
+
+\delimitershortfall=-2pt
+
 % The first page in a chapter also has header and footer.
 % Disable header at some point.
 \renewcommand*{\chapterpagestyle}{headings}
@@ -69,6 +77,7 @@ pagestyleset=KOMA-Script
   headings=openany
 }
 
+% Two sided?
 \KOMAoptions{
   twoside=false
 }

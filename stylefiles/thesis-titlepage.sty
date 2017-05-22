@@ -2,19 +2,19 @@
 % macro \maketitle.
 % 
 
-% 
-% For coloring stuff we have to edit later.
-\RequirePackage{xcolor}
+% % 
+% % For coloring stuff we have to edit later.
+% \RequirePackage{xcolor}
 
-% A nice default font. This also adds around 180kB of size to the output pdf.
-\RequirePackage{libertine}
-\RequirePackage[libertine]{newtxmath}
+% % For setting i.e. the margins of a page to some non-default value.
+% \@ifpackageloaded{geometry}{}{
+%   \RequirePackage[a4paper]{geometry}
+% }
 
-% For setting i.e. the margins of a page to some non-default value.
-\RequirePackage[a4paper]{geometry}
-
-% To get i.e. umlauts for german thesises.
-\RequirePackage[utf8]{inputenc}
+% % To get i.e. umlauts for german thesises.
+% \@ifpackageloaded{inputenc}{}{
+%   \RequirePackage[utf8]{inputenc}
+% }
 
 % 
 % Define macros for the properties of the titlepage.
@@ -48,20 +48,24 @@
 \newcommand*{\DefThesisDegreeClassShort}{}
 \newcommand*{\ThesisDegreeClassShort}[1]{\renewcommand*{\DefThesisDegreeClassShort}{#1}}
 
-\newcommand*{\DefSubject}{}
-\newcommand*{\Subject}[1]{\renewcommand*{\DefSubject}{#1}}
+\newcommand*{\DefThesisSubject}{}
+\newcommand*{\ThesisSubject}[1]{\renewcommand*{\DefThesisSubject}{#1}}
 
-\newcommand*{\DefInstitute}{}
-\newcommand*{\Institute}[1]{\renewcommand*{\DefInstitute}{#1}}
+\newcommand*{\DefThesisInstitute}{}
+\newcommand*{\ThesisInstitute}[1]{\renewcommand*{\DefThesisInstitute}{#1}}
 
-\newcommand*{\DefFaculty}{}
-\newcommand*{\Faculty}[1]{\renewcommand*{\DefFaculty}{#1}}
+\newcommand*{\DefThesisFaculty}{}
+\newcommand*{\ThesisFaculty}[1]{\renewcommand*{\DefThesisFaculty}{#1}}
 
-\newcommand*{\DefUniversity}{}
-\newcommand*{\University}[1]{\renewcommand*{\DefUniversity}{#1}}
+\newcommand*{\DefThesisUniversity}{}
+\newcommand*{\ThesisUniversity}[1]{\renewcommand*{\DefThesisUniversity}{#1}}
 
-\newcommand*{\DefGroup}{}
-\newcommand*{\Group}[1]{\renewcommand*{\DefGroup}{#1}}
+\newcommand*{\DefThesisUniversityLogo}{}
+\newcommand*{\ThesisUniversityLogo}[1]{\renewcommand*{\DefThesisUniversityLogo}{
+    \includegraphics[width=3cm]{#1}}}
+
+\newcommand*{\DefThesisGroup}{}
+\newcommand*{\ThesisGroup}[1]{\renewcommand*{\DefThesisGroup}{#1}}
 
 % 
 % Set the properties of the title page.
@@ -80,13 +84,6 @@
 \ThesisDegreeShort{\color{red}B.}
 \ThesisDegreeClassShort{Sc.}
 
-\Subject{Physik}
-
-\Group{AG Theoretische Optik \& Photonik}
-\Institute{Institut für Physik}
-\Faculty{Mathematisch-Naturwissenschaftlichen Fakultät}
-\University{Humboldt-Universität zu Berlin}
-
 %
 % Redefine the \maketitle macro.
 \renewcommand*{\maketitle}{
@@ -99,13 +96,13 @@
         \vspace{1em}
         \begin{center}
           \hspace*{1cm}\begin{minipage}[hbt]{10.5cm}
-            {\DefInstitute}
+            {\DefThesisInstitute}
 
-            {\DefGroup}
+            {\DefThesisGroup}
           \end{minipage}
           \begin{minipage}[hbt]{2cm}
             \centering
-            % \includegraphics[width=3cm]{Logos/husiegel}
+            \DefThesisUniversityLogo
           \end{minipage}\hspace*{1cm}
         \end{center}
         \vspace{1em}
@@ -122,11 +119,11 @@
         zur  Erlangung des akademischen Grades \\ \vspace*{\stretch{0.5}}
         {{\DefThesisDegree} of {\DefThesisDegreeClass} \\ \vspace*{\stretch{0.5}}
           ({\DefThesisDegreeShort}{\DefThesisDegreeClassShort})} \\ \vspace*{\stretch{0.5}}
-        im Fach {\DefSubject}\\ \vspace*{\stretch{5}}
+        im Fach {\DefThesisSubject}\\ \vspace*{\stretch{5}}
         eingereicht an der  \\ \vspace*{\stretch{0.5}}
-        {\DefFaculty}\\ \vspace*{\stretch{0.5}}
-        {\DefInstitute} \\ \vspace*{\stretch{0.5}}
-        {\DefUniversity}\\ \vspace*{\stretch{5}}
+        {\DefThesisFaculty}\\ \vspace*{\stretch{0.5}}
+        {\DefThesisInstitute} \\ \vspace*{\stretch{0.5}}
+        {\DefThesisUniversity}\\ \vspace*{\stretch{5}}
         von \\\vspace*{\stretch{0.5}}
         {\DefThesisAuthor} \\\vspace*{\stretch{0.5}}
         geboren am {\DefThesisAuthorBirthDate} in {\DefThesisAuthorBirthPlace}\\
@@ -137,8 +134,8 @@
     {\Large Betreuung:\\ \vspace*{\stretch{0.5}}\\
       \hspace*{0.5cm}{ 
         \begin{tabular}{r@{\hspace{2em}}l}
-          1.     & \emph{\DefThesisMentorA}\\ \vspace*{\stretch{0.5}}
-          2.  & \emph{\DefThesisMentorB}
+          1. & \emph{\DefThesisMentorA}\\ \vspace*{\stretch{0.5}}
+          2. & \emph{\DefThesisMentorB}
         \end{tabular}
       }}
   \end{titlepage}

@@ -1,16 +1,32 @@
+% Import the thesis class.
 \documentclass{stylefiles/thesis}
+
+% Set the names of university, faculty, group and so on.
+\input{setup/hu-top}
+
+% Set title, name, etc.
+\input{setup/thesis-meta-data}
+
+% Load the dedication page.
+\ThesisDedication{Danksagung}{notes}
+
+% Add a bibliography.
+\addbibresource{bib/bibfile.bib}
+
+
 
 \usepackage{lipsum}
 
 \begin{document}
-\frontmatter
-\maketitle
-% \makefrontmatter
 
-\mainmatter
+% Make the title page, a dedication, toc, etc
+\makefrontmatter
+% Include your thesis from here on.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{First Chap}
 \label{chap:first}
-
+\cite{a}
 \lipsum[1-1]
 
 \section{First Sect}
@@ -32,5 +48,12 @@
 \label{sec:asd}
 
 \lipsum[1-4]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis until here.
+
+% Make the end of the thesis.
+\makebackmatter
 
 \end{document}

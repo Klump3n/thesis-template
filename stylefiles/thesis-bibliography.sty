@@ -1,0 +1,66 @@
+% For everything bibliography related.
+
+% 
+% Load bibliography.
+% 
+\RequirePackage{csquotes}
+\RequirePackage[
+style=alphabetic,
+backend=biber,
+backref=true,
+defernumbers,
+sorting=nyt,
+url=true,
+eprint=false,
+giveninits=true,
+doi=true,
+isbn=true]{biblatex}
+
+
+% Category for own paper to appear in a separate
+% list with prefix "K" (see below \printbibliography)
+\DeclareBibliographyCategory{ownpublications}
+\addtocategory{ownpublications}{kopka}
+
+% Make the bibliography appear as a section
+% can also be changed to \section{#1}
+\defbibheading{bibliography}[\bibname]{	%%% print bibliography as a chapter
+  \chapter*{#1}
+}
+\defbibheading{subBibliography}[\bibname]{	%%% print own publications as section!!!
+  \section*{#1}
+}
+
+%
+% Refine the layout.
+% 
+% define title and names
+\DeclareNameAlias{default}{first-last}                  %%% order of author names (first-last)
+\renewcommand{\labelnamepunct}{\addcomma\space}         %%% comma between names
+\renewcommand*{\finalnamedelim}{~und\space}             %%% and in front of last author name
+\DeclareFieldFormat{journaltitle}{#1}           %%% comma after Journal (and not
+%%% italic}
+% 
+% \DeclareFieldFormat[inbook,book]{title}{\mkbibemph{#1}\hspace*{-0.3em}}%%% comma
+%                                 %%% after title, title in
+\DeclareFieldFormat[inbook,book]{title}{\mkbibemph{#1}}%%% comma after title, title in italics
+\DeclareFieldFormat[article,misc]{title}{``{#1}",}      %%% comma after title, title in italics
+%\DeclareFieldFormat[thesis]{title}{}                    %%% no title for thesis
+\DeclareFieldFormat{pages}{\mkfirstpage[]{#1}}          %%% show only first page
+\DeclareFieldFormat[book,inbook]{edition}{, #1}
+\DeclareFieldFormat[booklet]{urldate}{ \\ (Letzter Aufruf: {#1})}
+\DeclareFieldFormat[misc]{howpublished}{#1,}
+\DeclareFieldFormat{url}{\\ \textsc{URL:} \mkbibemph{\href{#1}{#1}}}
+\DeclareFieldFormat{labelnumberwidth}{[{#1}]}
+
+% define the fields that should appear
+\AtEveryBibitem{\clearfield{note}}
+\AtEveryBibitem{\clearfield{number}}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{\clearfield{issue}}
+
+
+% 
+% Provide the package.
+%
+\ProvidesPackage{stylefiles/thesis-bibliography}
