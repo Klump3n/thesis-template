@@ -19,10 +19,16 @@
 % 
 % Define macros for the properties of the titlepage.
 \newcommand*{\DefThesisTitle}{}
-\newcommand*{\ThesisTitle}[1]{\renewcommand*{\DefThesisTitle}{#1}}
+\newcommand*{\ThesisTitle}[1]{
+  \renewcommand*{\DefThesisTitle}{#1}
+  \hypersetup{pdftitle={#1}}
+}
 
 \newcommand*{\DefThesisAuthor}{}
-\newcommand*{\ThesisAuthor}[1]{\renewcommand*{\DefThesisAuthor}{#1}}
+\newcommand*{\ThesisAuthor}[1]{
+  \renewcommand*{\DefThesisAuthor}{#1}
+  \hypersetup{pdfauthor={#1}}
+}
 
 \newcommand*{\DefThesisAuthorBirthDate}{}
 \newcommand*{\ThesisAuthorBirthDate}[1]{\renewcommand*{\DefThesisAuthorBirthDate}{#1}}
@@ -68,7 +74,7 @@
 \newcommand*{\ThesisGroup}[1]{\renewcommand*{\DefThesisGroup}{#1}}
 
 % 
-% Set the properties of the title page.
+% Set the default properties of the title page.
 \ThesisTitle{\color{red}Default thesis title.}
 
 \ThesisAuthor{\color{red}Max Mustermann}
@@ -78,11 +84,20 @@
 \ThesisMentorA{\color{red}Mentor A}
 \ThesisMentorB{\color{red}Mentor B}
 
-\ThesisDegree{\color{red}Bachelor}
 \ThesisDegreeClass{Science}
-
-\ThesisDegreeShort{\color{red}B.}
 \ThesisDegreeClassShort{Sc.}
+
+\ThesisSubject{Physik}
+
+\ThesisDegree{\color{red}Bachelor}
+\ThesisDegreeShort{\color{red}B.}
+
+\ThesisGroup{\color{red}Group}
+\ThesisInstitute{\color{red}Institute}
+\ThesisFaculty{\color{red}Faculty}
+\ThesisUniversity{\color{red}University}
+
+
 
 %
 % Redefine the \maketitle macro.
